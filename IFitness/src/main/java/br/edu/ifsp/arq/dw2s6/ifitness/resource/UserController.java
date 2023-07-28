@@ -14,7 +14,7 @@ public class UserController {
 	
 	@GetMapping("/users")
 	public List<User> list(){
-		// User list
+		// User list 
 		var user1 = new User();
 		user1.setId(1L);
 		user1.setName("Thiago Vieira");

@@ -9,6 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -17,13 +22,20 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank
+	@Size(min = 3, max = 50)
 	private String name;
+	@NotBlank
+	@Email
 	private String email;
+	@NotBlank
+	@Size(min = 6, max = 8)
 	private String password;
+	@Min(value = 12)
 	private int age;
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private Gender gender;
-	
 	
 	public Long getId() {
 		return id;
@@ -77,4 +89,5 @@ public class User {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
+	
 }

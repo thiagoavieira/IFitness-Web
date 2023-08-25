@@ -16,7 +16,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password("{noop}admin").roles("ROLE");
+		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ROLE");
 	}
 	
 	@Override

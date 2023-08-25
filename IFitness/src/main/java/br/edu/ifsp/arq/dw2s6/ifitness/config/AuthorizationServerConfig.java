@@ -36,7 +36,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	}
 	
 	@Bean
-	private TokenStore tokenStore() {
+	public TokenStore tokenStore() {
 		return new InMemoryTokenStore();
 	}
 }

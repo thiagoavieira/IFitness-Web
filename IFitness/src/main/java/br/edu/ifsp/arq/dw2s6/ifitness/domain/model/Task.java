@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "activity")
-public class Activity {
+public class Task {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -102,7 +102,7 @@ public class Activity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Activity other = (Activity) obj;
+		Task other = (Task) obj;
 		return Objects.equals(id, other.id);
 	}
 }

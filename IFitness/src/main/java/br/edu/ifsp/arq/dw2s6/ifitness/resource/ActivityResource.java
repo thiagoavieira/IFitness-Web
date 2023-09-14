@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifsp.arq.dw2s6.ifitness.domain.model.Activity;
-import br.edu.ifsp.arq.dw2s6.ifitness.repository.ActivityRepository;
+import br.edu.ifsp.arq.dw2s6.ifitness.domain.model.Task;
+import br.edu.ifsp.arq.dw2s6.ifitness.repository.TaskRepository;
 import br.edu.ifsp.arq.dw2s6.ifitness.service.ActivityService;
 
 @RestController
@@ -23,19 +23,19 @@ import br.edu.ifsp.arq.dw2s6.ifitness.service.ActivityService;
 public class ActivityResource {
 	
 	@Autowired
-	private ActivityRepository activityRepository;
+	private TaskRepository activityRepository;
 	
 	@Autowired
 	private ActivityService activityService;
 	
 	@GetMapping
-	public List<Activity> list() {
+	public List<Task> list() {
 		return activityRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Activity> findById(@PathVariable Long id) {
-		Optional<Activity> activity = activityRepository.findById(id);
+	public ResponseEntity<Task> findById(@PathVariable Long id) {
+		Optional<Task> activity = activityRepository.findById(id);
 		if(activity.isPresent()) {
 			return ResponseEntity.ok(activity.get());
 		}
@@ -44,7 +44,7 @@ public class ActivityResource {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Activity create(@RequestBody Activity activity) {
+	public Task create(@RequestBody Task activity) {
 		return activityService.save(activity);
 	}
 }
